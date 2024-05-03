@@ -1,66 +1,62 @@
-class Person {
-    protected int id;
+import java.util.Scanner;
+
+class person{
+    protected  int id;
     protected String name;
     protected String address;
+    person(){
+        id = 0;
+        name = null;
+        address = null;
+    }
 
-    public Person(int id, String name, String address) {
+    public person(int id, String name,String address){
         this.id = id;
         this.name = name;
         this.address = address;
     }
-
-    public String getName() {
-        return name;
+    public void input(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter id : ");
+        id = sc.nextInt();
+        System.out.println("Enter name : ");
+        name = sc.next();
+        System.out.println("Enter address : ");
+        address = sc.next();
+    }
+    public void output(){
+        System.out.println("id : "+id);
+        System.out.println("name : "+name);
+        System.out.println("address : "+address);
     }
 
-    public void setName(String name) {
-        this.name = name;
+}
+class Human extends person{
+    private int salary;
+    public Human(){
+        super();
+        salary = 0;
     }
-
-    public int getId() {
-        return id;
+    public Human(int id, String name,String address,int salary){
+        this.salary = salary;
     }
-
-    public void setId(int id) {
-        this.id = id;
+    public void input(){
+        super.input();
+        System.out.println("Enter salary : ");
+        Scanner sc = new Scanner(System.in);
+        salary = sc.nextInt();
     }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void output(){
+        super.output();
+        System.out.println("Salary : "+salary+" $");
     }
 }
-
-class Human extends Person {
-    private int score;
-
-    public Human(int id, String name, String address, int score) {
-        super(id, name, address);
-        this.score = score;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public void displayInfo() {
-        System.out.println("id: " + id);
-        System.out.println("name: " + name);
-        System.out.println("address: " + address);
-        System.out.println("score: " + score);
-    }
-}
-
 public class inheritance {
     public static void main(String[] args) {
-        Human student = new Human(007, "levis", "Phnom Penh", 90);
-        student.displayInfo();
+        Human h = new Human();
+
+        h.input();
+        h.output();
+
     }
 }
